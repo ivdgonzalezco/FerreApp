@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "790516752281",
+    "firebase_url": "https://ferreapp-cfc62.firebaseio.com",
+    "project_id": "ferreapp-cfc62",
+    "storage_bucket": "ferreapp-cfc62.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790516752281:android:b1642ad685177c6d",
+        "android_client_info": {
+          "package_name": "com.ferreapp.ferreapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790516752281-k1kpcui8gcjdbbbueh28bi8kpolh25vu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9HROj0TdzpHNCnr5SDqm47Q33IrTc1_Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
