@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "790516752281-deiu27pijq52iemn7r3uedcgnmtlodj9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ferreapp.ferreapp",
+            "certificate_hash": "5d3f30669c0c02855fc061c5c8438fa8f283c67e"
+          }
+        },
+        {
           "client_id": "790516752281-k1kpcui8gcjdbbbueh28bi8kpolh25vu.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790516752281-k1kpcui8gcjdbbbueh28bi8kpolh25vu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
