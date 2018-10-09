@@ -27,14 +27,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Usuario del comprador"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Tab" />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Tab"
+            android:textSize="24sp" />
 
         <ListView
             android:id="@+id/list_view"
             style="@android:style/Widget.Material.ListView"
             android:layout_width="match_parent"
             android:layout_height="305dp"
-            android:background="@android:color/holo_orange_light" />
+            android:background="@android:color/holo_orange_light"
+            android:divider="@android:drawable/bottom_bar"
+            android:dividerHeight="2dp" />
 
         <TextView
             android:id="@+id/price"
@@ -42,7 +45,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Precio total $"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Tab" />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Tab"
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/updateOrder"

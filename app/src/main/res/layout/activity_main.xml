@@ -36,5 +36,14 @@
             android:layout_height="wrap_content"
             android:text="Ver las calificaciones" />
 
+        <Button
+            android:id="@+id/addOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="70dp"
+            android:text="Add order " />
+
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

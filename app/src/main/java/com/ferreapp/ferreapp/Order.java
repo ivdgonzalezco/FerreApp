@@ -1,6 +1,7 @@
 package com.ferreapp.ferreapp;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
 
@@ -10,7 +11,7 @@ public class Order {
     private String state; //1-pagado 2-por_pagar 3-entregago 4-rechazado
     private String comment; //bueno, deficiente, excelente, regular
     private String commentDescription;
-    private Product[] products;
+    private ArrayList<Product> products;
 
     public Order() {
     }
@@ -52,12 +53,11 @@ public class Order {
         return commentDescription;
     }
 
-    public Product[] getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public Order(String seller, String buyer, int totalPrice, String state, String comment, String commentDescription, Product[] products) {
-
+    public Order(String seller, String buyer, int totalPrice, String state, String comment, String commentDescription, ArrayList<Product> products) {
         this.seller = seller;
         this.buyer = buyer;
         this.totalPrice = totalPrice;
@@ -67,8 +67,7 @@ public class Order {
         this.products = products;
     }
 
-    public Order(String seller, String buyer, int totalPrice, Product[] products) {
-
+    public Order(String seller, String buyer, int totalPrice, ArrayList<Product> products) {
         this.seller = seller;
         this.buyer = buyer;
         this.totalPrice = totalPrice;
@@ -84,7 +83,7 @@ public class Order {
                 ", state='" + state + '\'' +
                 ", comment='" + comment + '\'' +
                 ", commentDescription='" + commentDescription + '\'' +
-                ", products=" + Arrays.toString(products) +
+                ", products=" + products +
                 '}';
     }
 }
