@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <Button
-            android:id="@+id/buttonPedidas"
+            android:id="@+id/buttonOrder"
             style="@android:style/Widget.Material.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             android:text="Ver la nuevas pedidas" />
 
         <Button
-            android:id="@+id/buttonCalificaciones"
+            android:id="@+id/buttonComments"
             style="@android:style/Widget.Material.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -10,20 +10,17 @@ import android.widget.Button;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button mButtonPedidas;
+    private Button mButtonOrder;
     private Button mButtonAddOrder;
+    private Button mButtonComments;
     private Product mProduct1, mProduct2, mProduct3, mProduct4;
-    private DatabaseReference mDatabase;
     private FirebaseFirestore db;
     private Order mOrder;
     private ArrayList<Product> mProducts;
@@ -36,14 +33,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        mButtonPedidas = (Button) findViewById(R.id.buttonPedidas);
+        mButtonOrder = (Button) findViewById(R.id.buttonOrder);
+        mButtonComments = (Button) findViewById(R.id.buttonComments);
 
-        mButtonPedidas.setOnClickListener(new View.OnClickListener() {
+        mButtonOrder.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent intent = new Intent(MainActivity.this,NuevasPedidas.class);
+                Intent intent = new Intent(MainActivity.this,SeeOrderActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mButtonComments.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(MainActivity.this,CommentsActivity.class);
                 startActivity(intent);
             }
         });
