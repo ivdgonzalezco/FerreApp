@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#ffff00">
+    android:background="@color/colorFondo">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -16,6 +16,80 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.6">
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ferre App"
+            android:textSize="70dp"
+            android:textColor="@color/colorLetra"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Materiales de construcción"
+            android:textSize="20dp"
+            android:textColor="@color/colorLetra"
+            android:layout_gravity="center"
+            android:layout_marginBottom="2dp"/>
+        <TextView
+            android:id="@+id/status_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="14dp"
+            android:textColor="@color/colorAccent"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:hint="Usuario"
+            android:background="@color/colorCajaTexto"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:hint="Contraseña"
+            android:background="@color/colorCajaTexto"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"/>
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBotones"
+            android:text="Ingresar"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"/>
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Aún no estas en FerreApp?"
+            android:textSize="14dp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorLetra"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regístrate"
+            android:layout_gravity="center"
+            android:textColor="@color/colorLetra"
+            android:background="@android:color/transparent"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cerrar sesión"
+            android:textSize="5dp"
+            android:id="@+id/signOutButton"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
