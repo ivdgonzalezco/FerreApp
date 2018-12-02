@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFE900"
+    android:id="@+id/linearlayout"
+    android:orientation="vertical"
+    tools:context=".Confirmar_Compra">
 
-</android.support.constraint.ConstraintLayout>
+        <TableLayout
+            android:id="@+id/tabla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/columnaProducto"
+                                        android:layout_height="wrap_content"
+                    android:text="@string/columna1"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorLetra"
+                    android:background="@color/colorPrimaryDark"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/columnaValor"
+                                        android:layout_height="wrap_content"
+                    android:text="@string/columna2"
+                    android:textSize="18dp"
+                    android:textColor="@color/colorLetra"
+                    android:background="@color/colorPrimaryDark"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/columnaCantidad"
+                    android:layout_height="wrap_content"
+                    android:text="@string/columna3"
+                    android:textSize="18dp"
+                    android:textColor="@color/colorLetra"
+                    android:background="@color/colorPrimaryDark"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/columnaSubtotal"
+                    android:layout_height="wrap_content"
+                    android:text="@string/columna4"
+                    android:textSize="18dp"
+                    android:textColor="@color/colorLetra"
+                    android:background="@color/colorPrimaryDark"
+                    android:textAlignment="center"/>
+
+            </TableRow>
+
+
+        </TableLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/botonCompra"
+        android:onClick="comprar"/>
+</LinearLayout>

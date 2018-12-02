@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FerreApp</string>
+    <string name="columna1">Producto</string>
+    <string name="columna2">Valor</string>
+    <string name="columna3">Cantidad</string>
+    <string name="columna4">Sub-total</string>
+    <string name="botonCompra">Comprar</string>
 </resources>

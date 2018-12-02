@@ -8,12 +8,12 @@ public class Product {
     private String description;
     private String brand;
 
-    public Product(String name, String category, int price, String description, String brand){
-        this.name=name;
-        this.category=category;
-        this.price=price;
-        this.description=description;
-        this.brand=brand;
+    public Product(String name, String category, int price, String description, String brand) {
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        this.description = description;
+        this.brand = brand;
     }
 
     public Product() {
