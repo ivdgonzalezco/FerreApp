@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:background="@color/colorFondo">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6">
+
+        <EditText
+            android:id="@+id/usuarioId"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:hint="Nombre usuario"
+            android:background="@color/colorCajaTexto"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textColor="@color/colorLetra"
+            android:textColorHint="@color/colorHint"
+            style="@style/CustomEditText"/>
+        <EditText
+            android:id="@+id/correoId"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:hint="Correo"
+            android:background="@color/colorCajaTexto"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textColor="@color/colorLetra"
+            android:textColorHint="@color/colorHint"
+            style="@style/CustomEditText"/>
+
+        <EditText
+            android:id="@+id/contrasenaId"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:hint="Contraseña"
+            android:background="@color/colorCajaTexto"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textColor="@color/colorLetra"
+            android:textColorHint="@color/colorHint"
+            style="@style/CustomEditText"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Estás interesado en?"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="@color/colorLetra"
+            android:layout_marginBottom="10dp"/>
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:id="@+id/interesId"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp">
+            <RadioButton android:id="@+id/radio_compra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/comprar_producto"
+                android:onClick="onRadioButtonClicked"
+                android:buttonTint="@color/colorLetra"
+                android:textColor="@color/colorLetra"
+                android:layout_marginLeft="5dp"/>
+            <RadioButton android:id="@+id/radio_venta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vender_producto"
+                android:onClick="onRadioButtonClicked"
+                android:textColor="@color/colorLetra"
+                android:buttonTint="@color/colorLetra"/>
+        </RadioGroup>
+        <Button
+            android:id="@+id/registroId"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBotones"
+            android:text="Registrarse"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"/>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

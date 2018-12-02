@@ -7,4 +7,5 @@
     <color name="colorFondo">#FFF700</color>
     <color name="colorBotones">#A6A000</color>
     <color name="colorCajaTexto">#FFFFFF</color>
+    <color name="colorHint">#666666</color>
 </resources>

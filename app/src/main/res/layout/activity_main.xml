@@ -46,7 +46,9 @@
             android:background="@color/colorCajaTexto"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"/>
+            android:layout_marginRight="50dp"
+            android:textColor="@color/colorLetra"
+            android:textColorHint="@color/colorHint"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="30dp"
@@ -54,7 +56,9 @@
             android:background="@color/colorCajaTexto"
             android:layout_marginBottom="2dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"/>
+            android:layout_marginRight="50dp"
+            android:textColor="@color/colorLetra"
+            android:textColorHint="@color/colorHint"/>
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -68,28 +72,63 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="¿Aún no estas en FerreApp?"
             android:textSize="14dp"
+            android:textStyle="bold"
             android:layout_gravity="center"
             android:textColor="@color/colorLetra"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Regístrate"
+            android:text="@string/registrate"
             android:layout_gravity="center"
             android:textColor="@color/colorLetra"
-            android:background="@android:color/transparent"/>
+            android:id="@+id/registrarseId" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cerrar sesión"
             android:textSize="5dp"
+            android:layout_marginBottom="10dp"
             android:id="@+id/signOutButton"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acerca de FerreApp"
+            android:textSize="8dp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorLetra"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Términos del servicio"
+            android:textSize="8dp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorLetra"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Póliticas de privacidad"
+            android:textSize="8dp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorLetra"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/izq"
+            android:layout_gravity="left"
+            android:layout_marginLeft="40dp"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/der"
+            android:layout_gravity="right"
+            android:layout_marginRight="40dp"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

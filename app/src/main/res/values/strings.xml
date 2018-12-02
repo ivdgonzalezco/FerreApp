@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">FerreApp</string>
     <string name="Client_Id">790516752281-3toqiqcod24guvuiq9isn3di8vbpjeeh.apps.googleusercontent.com</string>
+    <string name="registrate"><u>Regístrate</u></string>
+    <string name="title_activity_register">Registro</string>
+    <string name="comprar_producto">Comprar</string>
+    <string name="vender_producto">Vender</string>
 </resources>

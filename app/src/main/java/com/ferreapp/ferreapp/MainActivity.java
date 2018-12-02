@@ -1,9 +1,9 @@
 package com.ferreapp.ferreapp;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,12 +19,11 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
-import org.w3c.dom.Text;
-
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     SignInButton signInButton;
     Button signOutButton;
+    Button registerButton;
     TextView statusTextView;
     GoogleApiClient mGoogleApiClient;
     private static final String TAG = "SignInActivity";
@@ -32,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Configure sign-in to request the user's ID, email address, and basic
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 .requestEmail()
                 .build();
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this,this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
         statusTextView = (TextView) findViewById(R.id.status_textview);
@@ -51,19 +51,33 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         signOutButton = (Button) findViewById(R.id.signOutButton);
         signOutButton.setOnClickListener(this);
+        signOutButton.setVisibility(View.INVISIBLE);
+
+        registerButton =(Button) findViewById(R.id.registrarseId);
+        registerButton.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
-    switch (v.getId()){
-        case R.id.sign_in_button:
-            signIn();
-            break;
-        case R.id.signOutButton:
-            signOut();
-            break;
+        switch (v.getId()) {
+            case R.id.sign_in_button:
+                signIn();
+                break;
+            case R.id.signOutButton:
+                signOut();
+                break;
+            case R.id.registrarseId:
+                register();
+                break;
+        }
     }
+
+    private void register() {
+        Log.d("salida", "entró");
+        Intent regIntent = new Intent(MainActivity.this, RegisterActivity.class);
+        regIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(regIntent);
     }
 
     private void signOut() {
@@ -71,13 +85,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onResult(@NonNull Status status) {
                 statusTextView.setText("Sesión cerrada");
+                signOutButton.setVisibility(View.INVISIBLE);
             }
         });
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.d(TAG, "onConnectionFailed"+ connectionResult);
+        Log.d(TAG, "onConnectionFailed" + connectionResult);
         Log.d("Salida", "no inicio sesion");
 
     }
@@ -100,10 +115,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     private void handleSignInResult(GoogleSignInResult result) {
         Log.d(TAG, "handleSignInResult" + result.isSuccess());
-        if (result.isSuccess()){
+        if (result.isSuccess()) {
             GoogleSignInAccount acct = result.getSignInAccount();
             statusTextView.setText("Hola" + acct.getDisplayName());
-        } else{
+            signOutButton.setVisibility(View.VISIBLE);
+        } else {
             Log.d("Salida", "no inicio sesion");
         }
 
