@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFE900"
+    android:background="@color/colorBackground"
     android:id="@+id/linearlayout"
     android:orientation="vertical"
     tools:context=".Confirmar_Compra">
 
         <TableLayout
-            android:id="@+id/tabla"
+            android:id="@+id/tablaCompras"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:stretchColumns="*">
@@ -60,10 +60,23 @@
 
         </TableLayout>
 
+    <TextView
+        android:id="@+id/totalPagar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/totalAPagar"
+        android:textSize="18dp"
+        android:textColor="@color/colorLetra"
+        android:background="@color/colorPrimaryDark"
+        android:textAlignment="center"/>
+
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/botonCompra"
-        android:onClick="comprar"/>
+        android:layout_margin="20dp"
+        android:onClick="comprar"
+        android:text="@string/botonCompra" />
+
+
 </LinearLayout>

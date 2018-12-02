@@ -5,4 +5,9 @@
     <string name="columna3">Cantidad</string>
     <string name="columna4">Sub-total</string>
     <string name="botonCompra">Comprar</string>
+    <string name="totalAPagar">Total a Pagar: $</string>
+    <string name="ConfirmacionPago">Su pedido ha sido confirmado con el código número </string>
+    <string name="botonFactura">Generar comprobante</string>
+
+
 </resources>
