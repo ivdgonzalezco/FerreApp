@@ -8,6 +8,11 @@
     <string name="totalAPagar">Total a Pagar: $</string>
     <string name="ConfirmacionPago">Su pedido ha sido confirmado con el código número </string>
     <string name="botonFactura">Generar comprobante</string>
+    <string name="botonCalificar">Calificar Pedido</string>
+    <string name="TituloCalificacion">Califica el pedido</string>
+    <string name="TituloComents">Comentarios sobre el pedido</string>
+    <string name="botonComents">Enviar</string>
+    <string name="opinion">Escribe aca tu opinion</string>
 
 
 </resources>

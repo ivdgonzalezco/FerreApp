@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:id="@+id/linearlayout"
+    android:orientation="vertical"
+    tools:context=".Calificar_Pedido">
 
-</android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TituloCalificacion"
+        android:textSize="20dp"
+        android:textColor="@color/colorLetra"
+        android:background="@color/colorPrimaryDark"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:layout_margin="10dp"/>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorFondo"
+        android:padding="10dp"
+        android:numStars="5"/>
+
+    <TextView
+        android:id="@+id/RatingScale"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/titulo2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TituloComents"
+        android:textSize="20dp"
+        android:textColor="@color/colorLetra"
+        android:background="@color/colorPrimaryDark"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/comentarios"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:ems="10"
+        android:background="#FFFFFF"
+        android:textColor="@color/colorLetra"
+        android:inputType="textMultiLine"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:hint="@string/opinion"/>
+
+    <Button
+        android:id="@+id/enviar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/botonComents"
+        android:onClick="enviar"
+        android:padding="10dp"
+        android:layout_margin="10dp"/>
+
+</LinearLayout>

@@ -19,26 +19,25 @@ public class Confirmar_Compra extends AppCompatActivity {
             {"Pintura", "23000", "1", "23000"}
     };
     String Total = "";
-
+    Bundle bundle;
     private TableLayout tablapos;
-    private int ntabla = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confirmar_compra);
         tablapos = (TableLayout) findViewById(R.id.tablaCompras);
-        llenar_tabla();
-        calc_total();
+        //llenar_tabla();
+        //calc_total();
     }
 
     public void comprar(View view) {
 
         Intent compra=new Intent(this,Pagos.class);
-        compra.putExtra("ValorCompra",Total);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("carrito", carrito);
-        compra.putExtras(bundle);
+        //compra.putExtra("ValorCompra",Total);
+        //Bundle bundle = new Bundle();
+        //bundle.putSerializable("carrito", carrito);
+        //compra.putExtras(bundle);
         startActivity(compra);
     }
 
@@ -63,6 +62,9 @@ public class Confirmar_Compra extends AppCompatActivity {
                 tv3.setText(carrito[2][i]);
                 tv4.setText(carrito[3][i]);
 
+                Log.i("fslog",carrito[0][i]+" - "+carrito[1][i]+
+                        " - "+carrito[2][i]+" - "+carrito[3][i]);
+
                 tablapos.addView(fila);
             }
 
@@ -81,6 +83,9 @@ public class Confirmar_Compra extends AppCompatActivity {
                 tv2.setText(carrito[1][i]);
                 tv3.setText(carrito[2][i]);
                 tv4.setText(carrito[3][i]);
+
+                Log.i("fslog",carrito[0][i]+" - "+carrito[1][i]+
+                        " - "+carrito[2][i]+" - "+carrito[3][i]);
 
                 tablapos.addView(fila);
 

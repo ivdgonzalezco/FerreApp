@@ -71,13 +71,17 @@ public class Pagos extends AppCompatActivity {
         }
 
         return outputFile.getPath();
-
     }
 
     public void generar(View view) {
 
         String mensaje= Generar_factura();
-        Toast.makeText(this, mensaje,Toast.LENGTH_LONG);
+        Toast.makeText(this, mensaje,Toast.LENGTH_LONG).show();
+    }
+
+    public void calificar(View view) {
+        Intent i= new Intent(this,Calificar_Pedido.class);
+        startActivity(i);
     }
 }
 
