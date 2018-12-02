@@ -7,15 +7,70 @@
     tools:context=".MainActivity"
     android:background="#ffff00">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="58dp">
 
-    </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:focusableInTouchMode="false"
+            android:background="@color/common_google_signin_btn_text_dark_pressed">
+
+            <EditText
+                android:id="@+id/searchEditText"
+                android:layout_width="289dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:ems="10"
+                android:hint="Buscar productos"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/background_dark"
+                android:textColorHint="?attr/colorButtonNormal"
+                android:textColorLink="@color/common_google_signin_btn_text_dark_focused" />
+
+            <ImageButton
+                android:id="@+id/imageView"
+                android:layout_width="49dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@android:drawable/ic_menu_search" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="470dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="97dp"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/RecyclerViewHighlighted"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:text="Nuestros productos"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>
