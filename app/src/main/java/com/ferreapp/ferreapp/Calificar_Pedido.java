@@ -13,19 +13,20 @@ public class Calificar_Pedido extends AppCompatActivity implements RatingBar.OnR
     RatingBar mRatingBar;
     TextView mRatingScale;
     EditText comentario;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calificar_pedido);
         mRatingBar = (RatingBar) findViewById(R.id.ratingBar);
         mRatingScale = (TextView) findViewById(R.id.RatingScale);
-        comentario= (EditText) findViewById(R.id.comentarios);
+        comentario = (EditText) findViewById(R.id.comentarios);
 
     }
 
     public void enviar(View view) {
         String comentarios;
-        int valor=(int) mRatingBar.getRating();
-        comentarios=comentario.getText().toString();
+        int valor = (int) mRatingBar.getRating();
+        comentarios = comentario.getText().toString();
         //enviar a la BD
         Toast.makeText(this, "Gracias por sus comentarios", Toast.LENGTH_LONG).show();
 

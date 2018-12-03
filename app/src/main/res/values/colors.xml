@@ -5,5 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorBackground">#FFE900</color>
     <color name="colorFondo">#000000</color>
+    <color name="colorTabla">#e9f17b</color>
+    <color name="letraTabla">#e9f17b</color>
     <color name="colorLetra">#FFFFFF</color>
 </resources>

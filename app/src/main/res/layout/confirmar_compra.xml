@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:padding="5dp"
-        android:stretchColumns="*">
+        android:stretchColumns="*"
+        android:background="@color/colorTabla"   >
 
         <TableRow
             android:layout_width="match_parent"
@@ -28,7 +29,7 @@
                 android:text="@string/columna1"
                 android:textAlignment="center"
                 android:textColor="@color/colorLetra"
-                android:textSize="20dp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/columnaValor"
@@ -71,13 +72,13 @@
         android:text="@string/totalAPagar"
         android:textAlignment="center"
         android:textColor="@color/colorLetra"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="20sp"
         android:onClick="comprar"
         android:text="@string/botonCompra" />
 

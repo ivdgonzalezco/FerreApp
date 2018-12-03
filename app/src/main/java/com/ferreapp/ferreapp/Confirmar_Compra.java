@@ -12,12 +12,16 @@ import android.widget.TextView;
 
 public class Confirmar_Compra extends AppCompatActivity {
 
+
     private String[][] carrito = {
             {"Tornillos", "100", "10", "1000"},
             {"Chasos", "100", "10", "1000"},
             {"Broca 1/2", "4500", "20", "9000"},
             {"Pintura", "23000", "1", "23000"}
     };
+
+    private int NUM_COLS=carrito.length;
+    private int NUM_ROWS=carrito[0].length;
     String Total = "";
     Bundle bundle;
     private TableLayout tablapos;
@@ -27,70 +31,34 @@ public class Confirmar_Compra extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confirmar_compra);
         tablapos = (TableLayout) findViewById(R.id.tablaCompras);
-        //llenar_tabla();
-        //calc_total();
+        llenar_tabla();
+        calc_total();
     }
 
     public void comprar(View view) {
 
         Intent compra=new Intent(this,Pagos.class);
-        //compra.putExtra("ValorCompra",Total);
-        //Bundle bundle = new Bundle();
-        //bundle.putSerializable("carrito", carrito);
-        //compra.putExtras(bundle);
+        compra.putExtra("ValorCompra",Total);
+        bundle = new Bundle();
+        bundle.putSerializable("carrito", carrito);
+        compra.putExtras(bundle);
         startActivity(compra);
     }
 
 
     public void llenar_tabla() {
-        if (tablapos.getChildCount() > 1) {
-            Log.i("fslog", "nrows=" + tablapos.getChildCount());
-            int filas = tablapos.getChildCount();
-            tablapos.removeViews(1, filas - 1);
-            for (int i = 0; i < carrito[i].length; i++) {
-                Log.i("fslog", "matriz[i].length=" + carrito[i].length);
-                TableRow fila = new TableRow(this);
-                fila.setBackgroundColor(Color.parseColor("#FFFFFF"));
 
+        for(int i = 0; i<NUM_ROWS; i++){
+            TableRow tableRow = new TableRow(this);
+            tablapos.addView(tableRow);
+
+            for(int j= 0; j<NUM_COLS; j++){
                 TextView tv1 = new TextView(this);
-                TextView tv2 = new TextView(this);
-                TextView tv3 = new TextView(this);
-                TextView tv4 = new TextView(this);
-
-                tv1.setText(carrito[0][i]);
-                tv2.setText(carrito[1][i]);
-                tv3.setText(carrito[2][i]);
-                tv4.setText(carrito[3][i]);
-
-                Log.i("fslog",carrito[0][i]+" - "+carrito[1][i]+
-                        " - "+carrito[2][i]+" - "+carrito[3][i]);
-
-                tablapos.addView(fila);
+                tv1.setText(carrito[i][j]);
+                tv1.setTextColor(Color.parseColor("#3f51b5"));
+                Log.i("fslog","carrito["+i+"]["+j+"]="+carrito[i][j]);
+                tableRow.addView(tv1);
             }
-
-        } else {
-            for (int i = 0; i < carrito[i].length; i++) {
-                Log.i("fslog", "matriz[i].length=" + carrito[i].length);
-                TableRow fila = new TableRow(this);
-                fila.setBackgroundColor(Color.parseColor("#FFFFFF"));
-
-                TextView tv1 = new TextView(this);
-                TextView tv2 = new TextView(this);
-                TextView tv3 = new TextView(this);
-                TextView tv4 = new TextView(this);
-
-                tv1.setText(carrito[0][i]);
-                tv2.setText(carrito[1][i]);
-                tv3.setText(carrito[2][i]);
-                tv4.setText(carrito[3][i]);
-
-                Log.i("fslog",carrito[0][i]+" - "+carrito[1][i]+
-                        " - "+carrito[2][i]+" - "+carrito[3][i]);
-
-                tablapos.addView(fila);
-
-            }
-
         }
 
     }
@@ -98,10 +66,10 @@ public class Confirmar_Compra extends AppCompatActivity {
     public void calc_total() {
         double suma = 0;
 
-        for (int i = 0; i < carrito[i].length; i++) {
-            suma = suma + Double.parseDouble(carrito[3][i]);
-
+        for (int i = 0; i <NUM_ROWS; i++) {
+            suma = suma + Double.parseDouble(carrito[i][3]);
         }
+        Log.i("fslog","Pagar: "+suma);
         Total=""+suma;
         TextView tot= (TextView) findViewById(R.id.totalPagar);
         tot.setText("Total a Pagar: $"+ Total);

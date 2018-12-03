@@ -26,15 +26,14 @@ public class Pagos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pagos);
         extras = getIntent().getExtras();
-        Total=extras.getString("Total");
+        Total = extras.getString("ValorCompra");
         Intent este = this.getIntent();
         Bundle bundle = este.getExtras();
-        carrito= (List<String>) bundle.getSerializable("carrito");
-
+        carrito = (List<String>) bundle.getSerializable("carrito");
 
     }
 
-    public String Generar_factura(){
+    public String Generar_factura() {
 
         PdfDocument document = new PdfDocument();
 
@@ -75,12 +74,12 @@ public class Pagos extends AppCompatActivity {
 
     public void generar(View view) {
 
-        String mensaje= Generar_factura();
-        Toast.makeText(this, mensaje,Toast.LENGTH_LONG).show();
+        String mensaje = Generar_factura();
+        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
     }
 
     public void calificar(View view) {
-        Intent i= new Intent(this,Calificar_Pedido.class);
+        Intent i = new Intent(this, Calificar_Pedido.class);
         startActivity(i);
     }
 }
