@@ -3,8 +3,10 @@ package com.ferreapp.ferreapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.graphics.pdf.PdfDocument;
+import android.util.Log;
 import android.view.View;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -15,11 +17,28 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class Pagos extends AppCompatActivity {
 
     String Total;
-    List<String> carrito;
+    String [][] carrito;
     Bundle extras;
+    private int NUM_COLS=carrito.length;
+    private int NUM_ROWS=carrito[0].length;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,53 +48,67 @@ public class Pagos extends AppCompatActivity {
         Total = extras.getString("ValorCompra");
         Intent este = this.getIntent();
         Bundle bundle = este.getExtras();
-        carrito = (List<String>) bundle.getSerializable("carrito");
+        carrito = (String[][]) bundle.getSerializable("carrito");
+
+
 
     }
 
     public String Generar_factura() {
 
-        PdfDocument document = new PdfDocument();
-
-        // repaint the user's text into the page
-        View content = findViewById(R.id.tablaCompras);
-
-        // crate a page description
-        int pageNumber = 1;
-        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(content.getWidth(),
-                content.getHeight() - 20, pageNumber).create();
-
-        // create a new page from the PageInfo
-        PdfDocument.Page page = document.startPage(pageInfo);
-
-        content.draw(page.getCanvas());
-
-        // do final processing of the page
-        document.finishPage(page);
-
-        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyyhhmmss");
-        String pdfName = "pdfdemo"
-                + sdf.format(Calendar.getInstance().getTime()) + ".pdf";
-
-        File outputFile = new File("/sdcard/FerreApp/", pdfName);
-
         try {
-            outputFile.createNewFile();
-            OutputStream out = new FileOutputStream(outputFile);
-            document.writeTo(out);
+            SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyyhhmmss");
+            String fechaHora=sdf.format(Calendar.getInstance().getTime());
+            String pdfName = "Comprobante_"+ fechaHora;
+            String fpath = "/sdcard/ferrapp/" + pdfName+ ".pdf";
+            File file = new File(fpath);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            Font bfBold12 = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD, new BaseColor(0, 0, 0));
+            Font bf12 = new Font(Font.FontFamily.TIMES_ROMAN, 12);
+
+
+            Document document = new Document();
+
+            PdfWriter.getInstance(document,new FileOutputStream(file.getAbsoluteFile()));
+            document.open();
+
+            document.add(new Paragraph("FerraApp"));
+            document.add(new Paragraph("Comprobante de Pago Nro. "+fechaHora));
+
+            String load="";
+            for(int i = 0; i<NUM_ROWS; i++){
+                for(int j= 0; j<NUM_COLS; j++){
+                    Log.i("fslog","Carga de carrito a PDF");
+                    load=load+carrito[i][j]+"  ";
+                }
+                document.add(new Paragraph(load));
+            }
+            document.add(new Paragraph("Total Pagado: $ "+Total));
             document.close();
-            out.close();
+
+            return fpath;
         } catch (IOException e) {
             e.printStackTrace();
+            return "";
+        } catch (DocumentException e) {
+               e.printStackTrace();
+            return "";
         }
-
-        return outputFile.getPath();
     }
 
     public void generar(View view) {
 
         String mensaje = Generar_factura();
-        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
+        if (!mensaje.equals("")){
+            Toast.makeText(this, "Comprobante generado: "+mensaje, Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "I/O error", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void calificar(View view) {
