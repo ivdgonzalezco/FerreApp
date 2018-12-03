@@ -70,7 +70,6 @@ public class Pagos extends AppCompatActivity {
             Font bfBold12 = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD, new BaseColor(0, 0, 0));
             Font bf12 = new Font(Font.FontFamily.TIMES_ROMAN, 12);
 
-
             Document document = new Document();
 
             PdfWriter.getInstance(document,new FileOutputStream(file.getAbsoluteFile()));
@@ -108,7 +107,6 @@ public class Pagos extends AppCompatActivity {
         } else {
             Toast.makeText(this, "I/O error", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     public void calificar(View view) {

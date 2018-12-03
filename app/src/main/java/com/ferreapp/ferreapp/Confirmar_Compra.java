@@ -11,8 +11,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 public class Confirmar_Compra extends AppCompatActivity {
-
-
+    
     private String[][] carrito = {
             {"Tornillos", "100", "10", "1000"},
             {"Chasos", "100", "10", "1000"},
@@ -44,7 +43,6 @@ public class Confirmar_Compra extends AppCompatActivity {
         compra.putExtras(bundle);
         startActivity(compra);
     }
-
 
     public void llenar_tabla() {
 
