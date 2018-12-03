@@ -5,9 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,8 +25,9 @@ public class CommentsActivity extends AppCompatActivity {
     private static final String TAG = "CommentsActivity";
     private FirebaseFirestore db;
     private ArrayList<Order> mOrders;
+    private TextView mText;
     private ListView mList;
-
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +37,22 @@ public class CommentsActivity extends AppCompatActivity {
 
         mOrders = new ArrayList<Order>();
         mList = (ListView) findViewById(R.id.list_comments);
+        mText = (TextView) findViewById(R.id.usuario_name);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Name, email address, and profile photo Url
+            email = user.getEmail();
+            Log.d(TAG, "onCreate: user = "+email);
+        } else
+            email = "";
+
+        mText.setText("Comentarios del usuario "+email);
 
         db = FirebaseFirestore.getInstance();
 
         db.collection("orders")
-              //  .whereEqualTo("state", qqch)
+                .whereEqualTo("seller", email)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

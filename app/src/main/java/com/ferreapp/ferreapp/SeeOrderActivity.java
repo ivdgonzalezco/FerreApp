@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -23,6 +25,7 @@ public class SeeOrderActivity extends AppCompatActivity {
     private static final String TAG = "MyActivity";
     private Order mOrder;
     private ArrayList<Product> mProducts;
+    private String email;
 
 
 
@@ -38,11 +41,19 @@ public class SeeOrderActivity extends AppCompatActivity {
 
         mProducts = new ArrayList<Product>();
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Name, email address, and profile photo Url
+            email = user.getEmail();
+            Log.d(TAG, "onCreate: user = "+email);
+        } else
+            email = "";
 
         db = FirebaseFirestore.getInstance();
 
         db.collection("orders")
                 .whereEqualTo("state", null)
+                .whereEqualTo("seller",email)
                 .limit(1)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -50,14 +61,17 @@ public class SeeOrderActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
                             Log.d(TAG, "onComplete: data fetched");
-                            mOrder = task.getResult().getDocuments().get(0).toObject(Order.class);
-                            mBuyerName.setText(mOrder.getBuyer());
-                            mTotalPrice.setText(String.valueOf(mOrder.getTotalPrice())+ " $");
-                            mProducts = new ArrayList<Product>();
-                            Iterator<Product> it = mOrder.getProducts().iterator();
-                            while(it.hasNext()){
-                                mProducts.add(it.next());
+                            if(task.getResult().getDocuments().size()!=0) {
+                                mOrder = task.getResult().getDocuments().get(0).toObject(Order.class);
+                                mBuyerName.setText(mOrder.getBuyer());
+                                mTotalPrice.setText(String.valueOf(mOrder.getTotalPrice()) + " $");
+                                mProducts = new ArrayList<Product>();
+                                Iterator<Product> it = mOrder.getProducts().iterator();
+                                while (it.hasNext()) {
+                                    mProducts.add(it.next());
+                                }
                             }
+
 
                             ProductArrayAdapter adap = new ProductArrayAdapter(SeeOrderActivity.this,mProducts);
                             mList.setAdapter(adap);
