@@ -42,16 +42,16 @@ public class RegisterActivity extends Activity {
         pbProgreso.setIndeterminate(true);
 
         mAuth = FirebaseAuth.getInstance();
-        listener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                //conocer si el usuario está logeado
-                FirebaseUser user = mAuth.getCurrentUser();
-                if (user !=null){
-                    abrirActividadInicio();
-                }
-            }
-        };
+//        listener = new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                //conocer si el usuario está logeado
+//                FirebaseUser user = mAuth.getCurrentUser();
+//                if (user !=null){
+//                    abrirActividadInicio();
+//                }
+//            }
+//        };
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,12 +62,14 @@ public class RegisterActivity extends Activity {
         });
     }
 
+    //!!!!!!!!!CAMBIAR EL SIGUIENTE CODIGO DE ACUERDO AL NOMBRE DE LA ACTIVIDAD DE IVAN!!!!!!!!!!!!!!
     private void abrirActividadInicio() {
-        //aquí instanciar la actividad de inicio
-//        Intent i = new Intent(this, nombreActividad.class);
-//        startActivity(i);
-//        finish();
+        Intent i = new Intent(this, HomeActivity.class);
+        startActivity(i);
+        finish();
     }
+
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     public void registrarUsuario() {
 
@@ -83,11 +85,11 @@ public class RegisterActivity extends Activity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        Log.d("salida", "createUserWithEmail:success");
+//                        Log.d("salida", "createUserWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
-
+                        Toast.makeText(getApplicationContext(), "Registro exitoso", Toast.LENGTH_LONG).show();
                     }else{
-                        Log.w("salida", "createUserWithEmail:failure", task.getException());
+//                        Log.w("salida", "createUserWithEmail:failure", task.getException());
 
                         Toast.makeText(getApplicationContext(), "ERROR AL REGISTRAR", Toast.LENGTH_LONG).show();
                     }

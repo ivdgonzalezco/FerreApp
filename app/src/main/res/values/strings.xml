@@ -5,4 +5,5 @@
     <string name="title_activity_register">Registro</string>
     <string name="comprar_producto">Comprar</string>
     <string name="vender_producto">Vender</string>
+    <string name="title_activity_home">HomeActivity</string>
 </resources>
