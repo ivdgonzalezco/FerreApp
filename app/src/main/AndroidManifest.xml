@@ -18,11 +18,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.NoActionBar">
         <activity android:name=".MainActivity">
+        <activity android:name=".SellerInitActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SeeOrderActivity" />
+        <activity android:name=".CommentsActivity"></activity>
         <activity android:name=".MainProductsActivity"
             android:windowSoftInputMode="adjustPan">
         </activity>
