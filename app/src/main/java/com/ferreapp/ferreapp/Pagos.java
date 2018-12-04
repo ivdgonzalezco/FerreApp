@@ -1,6 +1,10 @@
 package com.ferreapp.ferreapp;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -37,8 +41,8 @@ public class Pagos extends AppCompatActivity {
     String Total;
     String [][] carrito;
     Bundle extras;
-    private int NUM_COLS=carrito.length;
-    private int NUM_ROWS=carrito[0].length;
+    private int NUM_COLS;
+    private int NUM_ROWS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +54,50 @@ public class Pagos extends AppCompatActivity {
         Bundle bundle = este.getExtras();
         carrito = (String[][]) bundle.getSerializable("carrito");
 
-
+        NUM_COLS=carrito.length;
+        NUM_ROWS=carrito[0].length;
 
     }
 
+    private String Generar_factura(){
+        // create a new document
+        PdfDocument document = new PdfDocument();
+
+        // crate a page description
+        PdfDocument.PageInfo pageInfo =
+                new PdfDocument.PageInfo.Builder(612, 792, 1).create();
+
+        // start a page
+        PdfDocument.Page page = document.startPage(pageInfo);
+
+        Canvas canvas = page.getCanvas();
+
+        Paint paint = new Paint();
+        paint.setColor(Color.RED);
+
+        canvas.drawCircle(50, 50, 30, paint);
+
+        // finish the page
+        document.finishPage(page);
+
+        // write the document content
+        String targetPdf = "/sdcard/test.pdf";
+        File filePath = new File(targetPdf);
+        try {
+            document.writeTo(new FileOutputStream(filePath));
+            Toast.makeText(this, "Done", Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Something wrong: " + e.toString(),
+                    Toast.LENGTH_LONG).show();
+        }
+
+        // close the document
+        document.close();
+
+        return targetPdf;
+    }
+/*
     public String Generar_factura() {
 
         try {
@@ -98,7 +142,7 @@ public class Pagos extends AppCompatActivity {
             return "";
         }
     }
-
+*/
     public void generar(View view) {
 
         String mensaje = Generar_factura();
