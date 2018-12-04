@@ -42,16 +42,16 @@ public class RegisterActivity extends Activity {
         pbProgreso.setIndeterminate(true);
 
         mAuth = FirebaseAuth.getInstance();
-//        listener = new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                //conocer si el usuario está logeado
-//                FirebaseUser user = mAuth.getCurrentUser();
-//                if (user !=null){
-//                    abrirActividadInicio();
-//                }
-//            }
-//        };
+        listener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                //conocer si el usuario está logeado
+                FirebaseUser user = mAuth.getCurrentUser();
+                if (user !=null){
+                    abrirActividadInicio();
+                }
+            }
+       };
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +64,7 @@ public class RegisterActivity extends Activity {
 
     //!!!!!!!!!CAMBIAR EL SIGUIENTE CODIGO DE ACUERDO AL NOMBRE DE LA ACTIVIDAD DE IVAN!!!!!!!!!!!!!!
     private void abrirActividadInicio() {
-        Intent i = new Intent(this, HomeActivity.class);
+        Intent i = new Intent(this, MainProductsActivity.class);
         startActivity(i);
         finish();
     }
