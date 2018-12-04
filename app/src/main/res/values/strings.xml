@@ -6,4 +6,5 @@
     <string name="comprar_producto">Comprar</string>
     <string name="vender_producto">Vender</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string name="amount_format">Cantidad: %1$s</string>
 </resources>
