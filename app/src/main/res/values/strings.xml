@@ -7,4 +7,19 @@
     <string name="vender_producto">Vender</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="amount_format">Cantidad: %1$s</string>
+    <string name="columna1">Producto</string>
+    <string name="columna2">Valor</string>
+    <string name="columna3">Cantidad</string>
+    <string name="columna4">Sub-total</string>
+    <string name="botonCompra">Comprar</string>
+    <string name="totalAPagar">Total a Pagar: $</string>
+    <string name="ConfirmacionPago">Su pedido ha sido confirmado con el código número </string>
+    <string name="botonFactura">Generar comprobante</string>
+    <string name="botonCalificar">Calificar Pedido</string>
+    <string name="TituloCalificacion">Califica el pedido</string>
+    <string name="TituloComents">Comentarios sobre el pedido</string>
+    <string name="botonComents">Enviar</string>
+    <string name="opinion">Escribe aca tu opinion</string>
+
+
 </resources>
