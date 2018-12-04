@@ -1,58 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_margin="5dp"
+    android:background="#A6A000">
 
-    <RelativeLayout
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/scProductLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="#A6A000"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/scProductImage"
-            android:layout_width="87dp"
-            android:layout_height="74dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="21dp"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp">
 
-        <TextView
-            android:id="@+id/scProductName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/scProductImage"
-            android:layout_marginStart="130dp"
-            android:text="TextView" />
+            <ImageView
+                android:id="@+id/scProductImage"
+                android:layout_width="88dp"
+                android:layout_height="79dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/scProductName"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="-6dp"
+                app:srcCompat="@android:drawable/btn_star_big_on" />
 
-        <TextView
-            android:id="@+id/scProductBrand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/scProductName"
-            android:layout_marginTop="49dp"
-            android:text="TextView" />
+            <TextView
+                android:id="@+id/scProductName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="12dp"
+                android:text="TextView"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
-        <TextView
-            android:id="@+id/scProductPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/scProductImage"
-            android:layout_alignStart="@+id/scProductName"
-            android:text="TextView" />
+            <TextView
+                android:id="@+id/scProductBrand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/scProductName"
+                android:layout_marginTop="41dp"
+                android:text="TextView"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
-        <ImageButton
-            android:id="@+id/scDeleteProductBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="47dp"
-            android:layout_marginTop="32dp"
-            app:srcCompat="@android:drawable/ic_delete" />
-    </RelativeLayout>
-</LinearLayout>
+            <TextView
+                android:id="@+id/scProductPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/scProductImage"
+                android:layout_alignStart="@+id/scProductName"
+                android:text="TextView"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+            <EditText
+                android:id="@+id/scProductAmount"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/scProductName"
+                android:layout_marginEnd="51dp"
+                android:ems="12"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/scProductAmount"
+                android:layout_alignTop="@+id/scProductName"
+                android:text="Cantidad"
+                android:textColor="@android:color/background_dark" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

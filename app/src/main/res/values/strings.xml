@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FerreApp</string>
+    <string name="amount_format">Cantidad: %1$s</string>
 </resources>

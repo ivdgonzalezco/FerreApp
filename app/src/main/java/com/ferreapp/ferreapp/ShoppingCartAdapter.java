@@ -2,11 +2,16 @@ package com.ferreapp.ferreapp;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,11 +38,26 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
     @Override
     public void onBindViewHolder(@NonNull ShoppingCartAdapter.RecyclerViewHolder recyclerViewHolder, int i) {
 
-        Product product = productList.get(i);
+        final Product product = productList.get(i);
 
         recyclerViewHolder.mSCProductName.setText(product.getProductName());
         recyclerViewHolder.mSCProductBrand.setText(product.getProductBrand());
         recyclerViewHolder.mSCProductPrice.setText(product.getProductPrice());
+        recyclerViewHolder.mSCProductAmount.setText(product.getProductAmount());
+
+        recyclerViewHolder.mSCProductLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailedProductActivity.class);
+                intent.putExtra("productName", product.getProductName());
+                intent.putExtra("productBrand", product.getProductBrand());
+                intent.putExtra("productPrice", product.getProductPrice());
+                intent.putExtra("productDescription", product.getProductDescription());
+                intent.putExtra("productAmount", product.getProductAmount());
+
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -51,6 +71,8 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
         public TextView mSCProductName;
         public TextView mSCProductBrand;
         public TextView mSCProductPrice;
+        public EditText mSCProductAmount;
+        public LinearLayout mSCProductLayout;
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -58,6 +80,8 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
             mSCProductName = itemView.findViewById(R.id.scProductName);
             mSCProductBrand = itemView.findViewById(R.id.scProductBrand);
             mSCProductPrice = itemView.findViewById(R.id.scProductPrice);
+            mSCProductAmount = itemView.findViewById(R.id.scProductAmount);
+            mSCProductLayout = itemView.findViewById(R.id.scProductLayout);
         }
     }
 }

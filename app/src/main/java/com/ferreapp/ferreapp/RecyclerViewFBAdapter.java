@@ -2,6 +2,7 @@ package com.ferreapp.ferreapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -40,9 +42,12 @@ public class RecyclerViewFBAdapter extends RecyclerView.Adapter<RecyclerViewFBAd
 
         final Product product = productList.get(i);
 
+        Resources res = context.getResources();
+
         recyclerViewHolder.mProductName.setText(product.getProductName());
         recyclerViewHolder.mProductBrand.setText(product.getProductBrand());
         recyclerViewHolder.mProductPrice.setText(product.getProductPrice());
+        recyclerViewHolder.mProductAmount.setText(String.format(res.getString(R.string.amount_format),product.getProductAmount()));
 
         recyclerViewHolder.mProductLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,21 +57,12 @@ public class RecyclerViewFBAdapter extends RecyclerView.Adapter<RecyclerViewFBAd
                 intent.putExtra("productBrand", product.getProductBrand());
                 intent.putExtra("productPrice", product.getProductPrice());
                 intent.putExtra("productDescription", product.getProductDescription());
+                intent.putExtra("productAmount", product.getProductAmount());
 
                 context.startActivity(intent);
             }
         });
 
-        recyclerViewHolder.mShoppingCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ArrayList<Product> productToSingleton= ProductSingleton.getInstance().getProducts();
-
-                Log.d("WTF", "Size: " + productToSingleton.size());
-                productToSingleton.add(product);
-                ProductSingleton.getInstance().setProducts(productToSingleton);
-            }
-        });
     }
 
     @Override
@@ -79,15 +75,21 @@ public class RecyclerViewFBAdapter extends RecyclerView.Adapter<RecyclerViewFBAd
         notifyDataSetChanged();
     }
 
+    public ArrayList<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(ArrayList<Product> productList) {
+        this.productList = productList;
+    }
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView mProductImage;
         public TextView mProductName;
         public TextView mProductBrand;
-        public TextView mProductPrice;
-        public ImageButton mShoppingCart;
-        public RelativeLayout mProductLayout;
+        public TextView mProductPrice, mProductAmount;
+        public LinearLayout mProductLayout;
 
 
         public RecyclerViewHolder(@NonNull View itemView) {
@@ -96,8 +98,10 @@ public class RecyclerViewFBAdapter extends RecyclerView.Adapter<RecyclerViewFBAd
             mProductName = itemView.findViewById(R.id.productName);
             mProductBrand = itemView.findViewById(R.id.productBrand);
             mProductPrice = itemView.findViewById(R.id.productPrice);
-            mShoppingCart = itemView.findViewById(R.id.shoppingCartBtn);
             mProductLayout = itemView.findViewById(R.id.productLayout);
+            mProductAmount = itemView.findViewById(R.id.productAmount);
         }
     }
+
+
 }

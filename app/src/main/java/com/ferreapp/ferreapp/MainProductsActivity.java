@@ -1,11 +1,13 @@
 package com.ferreapp.ferreapp;
 
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -21,24 +23,24 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainProductsActivity extends AppCompatActivity{
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private ImageButton button;
     private EditText mSearchEditText;
 
-
     RecyclerView mRecyclerView;
     RecyclerViewFBAdapter recyclerViewAdapter;
 
     ArrayList<Product> products = new ArrayList<>();
 
+    SwipeController swipeController = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_products_activity);
 
         button = findViewById(R.id.imageView);
         mSearchEditText = findViewById(R.id.searchEditText);
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
+                Intent intent = new Intent(MainProductsActivity.this, ShoppingCartActivity.class);
                 startActivity(intent);
             }
         });
@@ -79,6 +81,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        swipeController = new SwipeController(new SwipeControllerActions() {
+            @Override
+            public void onRightClicked(int position) {
+                ArrayList<Product> productToSingleton= ProductSingleton.getInstance().getProducts();
+
+                Log.d("WTF", "Size: " + productToSingleton.size());
+                productToSingleton.add(recyclerViewAdapter.getProductList().get(position));
+                ProductSingleton.getInstance().setProducts(productToSingleton);
+            }
+        });
+
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
+        itemTouchhelper.attachToRecyclerView(mRecyclerView);
+
+        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+                swipeController.onDraw(c);
+            }
+        });
     }
 
     private void loadDataFromFirebase() {
@@ -90,10 +112,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (DocumentSnapshot document : task.getResult()) {
-                                Product product = new Product(document.getString("name"),
+                                Product product = new Product(
+                                        document.getString("name"),
                                         document.getString("brand"),
                                         document.getString("description"),
-                                        document.getString("price"));
+                                        document.getString("price"),
+                                        document.getString("amount"));
                                 products.add(product);
                             }
                         } else {
