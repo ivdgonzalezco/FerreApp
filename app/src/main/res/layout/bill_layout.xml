@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:id="@+id/linearlayout"
+    android:orientation="vertical"
+    tools:context=".Confirmar_Compra">
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:text="Materiales de construcción"
+        android:textColor="@color/colorLetra"
+        android:textSize="20dp" />
+
+    <TableLayout
+        android:id="@+id/tablaComprasBill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="246dp"
+        android:background="@color/colorTabla"
+        android:padding="5dp"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/columnaProducto"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:text="@string/columna1"
+                android:textAlignment="center"
+                android:textColor="@color/colorLetra"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/columnaValor"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:text="@string/columna2"
+                android:textAlignment="center"
+                android:textColor="@color/colorLetra"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/columnaCantidad"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:text="@string/columna3"
+                android:textAlignment="center"
+                android:textColor="@color/colorLetra"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/columnaSubtotal"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:text="@string/columna4"
+                android:textAlignment="center"
+                android:textColor="@color/colorLetra"
+                android:textSize="18dp" />
+
+        </TableRow>
+
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/totalPagarBill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="99dp"
+        android:background="@color/colorPrimaryDark"
+        android:textAlignment="center"
+        android:textColor="@color/colorLetra"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/dateBill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="191dp"
+        android:text="TextView"
+        android:textColor="@android:color/background_dark" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="Ferre App"
+        android:textColor="@color/colorLetra"
+        android:textSize="70dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="156dp"
+        android:text="Factura de venta"
+        android:textColor="@android:color/background_dark" />
+
+
+</RelativeLayout>

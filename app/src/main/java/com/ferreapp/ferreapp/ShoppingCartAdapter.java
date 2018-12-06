@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +38,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ShoppingCartAdapter.RecyclerViewHolder recyclerViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final ShoppingCartAdapter.RecyclerViewHolder recyclerViewHolder, int i) {
 
         final Product product = productList.get(i);
 
@@ -44,6 +46,23 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
         recyclerViewHolder.mSCProductBrand.setText(product.getProductBrand());
         recyclerViewHolder.mSCProductPrice.setText(product.getProductPrice());
         recyclerViewHolder.mSCProductAmount.setText(product.getProductAmount());
+
+        recyclerViewHolder.mSCProductAmount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                product.setProductAmount(recyclerViewHolder.mSCProductAmount.getText().toString());
+            }
+        });
 
         recyclerViewHolder.mSCProductLayout.setOnClickListener(new View.OnClickListener() {
             @Override

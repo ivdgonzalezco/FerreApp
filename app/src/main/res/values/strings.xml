@@ -12,14 +12,31 @@
     <string name="columna3">Cantidad</string>
     <string name="columna4">Sub-total</string>
     <string name="botonCompra">Comprar</string>
-    <string name="totalAPagar">Total a Pagar: $</string>
-    <string name="ConfirmacionPago">Su pedido ha sido confirmado con el código número </string>
+    <string name="ConfirmacionPago">Su pedido ha sido enviado, pronto estaremos en contacto contigo.</string>
     <string name="botonFactura">Generar comprobante</string>
     <string name="botonCalificar">Calificar Pedido</string>
     <string name="TituloCalificacion">Califica el pedido</string>
     <string name="TituloComents">Comentarios sobre el pedido</string>
     <string name="botonComents">Enviar</string>
     <string name="opinion">Escribe aca tu opinion</string>
+    <string name="create_message">¿Desea crear la orden?</string>
+    <string name="create_title">Crear orden</string>
+    <string name="no">No</string>
+    <string name="yes">Si</string>
+    <string name="delete_sc">¿Desea borrar el carrito?</string>
+    <string name="delete_sc_title">Borrar carrito</string>
+    <string name="total_payment">Total a pagar: %1$s</string>
+    <string name="title_activity_navegation_">Navegation_Activity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
 
 
 </resources>

@@ -16,12 +16,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:padding="10dp"
-        android:textSize="16sp"
-        android:text="@string/ConfirmacionPago"
         android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="@string/ConfirmacionPago"
         android:textColor="@color/colorLetra"
-        android:background="@color/colorPrimaryDark"/>
+        android:textSize="16sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -35,18 +34,20 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="@color/colorBotones"
             android:onClick="generar"
             android:padding="10dp"
             android:text="@string/botonFactura" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:text="@string/botonCalificar"
-        android:onClick="calificar"/>
+        <Button
+            android:id="@+id/button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/colorBotones"
+            android:onClick="calificar"
+            android:padding="10dp"
+            android:text="@string/botonCalificar" />
 
     </LinearLayout>
 </LinearLayout>

@@ -9,13 +9,15 @@ public class Product implements Serializable{
     private String productDescription;
     private String productPrice;
     private String productAmount;
+    private String productImageURL;
 
-    public Product(String productName, String productBrand, String productDescription, String productPrice, String productAmount) {
+    public Product(String productName, String productBrand, String productDescription, String productPrice, String productAmount, String productImageURL) {
         this.productName = productName;
         this.productBrand = productBrand;
         this.productDescription = productDescription;
         this.productPrice = productPrice;
         this.productAmount = productAmount;
+        this.productImageURL = productImageURL;
     }
 
     public String getProductName() {
@@ -56,5 +58,13 @@ public class Product implements Serializable{
 
     public void setProductAmount(String productAmount) {
         this.productAmount = productAmount;
+    }
+
+    public String getProductImageURL() {
+        return productImageURL;
+    }
+
+    public void setProductImageURL(String productImageURL) {
+        this.productImageURL = productImageURL;
     }
 }

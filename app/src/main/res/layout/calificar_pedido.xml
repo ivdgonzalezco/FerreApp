@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,63 +14,74 @@
         android:id="@+id/titulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/TituloCalificacion"
-        android:textSize="20dp"
-        android:textColor="@color/colorLetra"
-        android:background="@color/colorPrimaryDark"
-        android:textAlignment="center"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="47dp"
         android:padding="10dp"
-        android:layout_margin="10dp"/>
+        android:text="@string/TituloCalificacion"
+        android:textAlignment="center"
+        android:textColor="@color/colorLetra"
+        android:textSize="20dp" />
 
     <RatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/colorFondo"
-        android:padding="10dp"
-        android:numStars="5"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="135dp"
+        android:background="?attr/colorPrimary"
+        android:numStars="5" />
 
     <TextView
         android:id="@+id/RatingScale"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="209dp"
         android:padding="10dp"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/colorLetra"
+        android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/titulo2"
+        android:id="@+id/titulo3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/TituloComents"
-        android:textSize="20dp"
-        android:textColor="@color/colorLetra"
-        android:background="@color/colorPrimaryDark"
-        android:textAlignment="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="238dp"
         android:padding="10dp"
-        android:layout_margin="10dp"/>
+        android:text="@string/TituloComents"
+        android:textAlignment="center"
+        android:textColor="@color/colorLetra"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/comentarios"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:ems="10"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="118dp"
         android:background="#FFFFFF"
-        android:textColor="@color/colorLetra"
+        android:ems="10"
+        android:hint="@string/opinion"
         android:inputType="textMultiLine"
         android:padding="10dp"
-        android:layout_margin="10dp"
-        android:hint="@string/opinion"/>
+        android:textColor="@color/colorLetra" />
 
     <Button
         android:id="@+id/enviar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/botonComents"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="48dp"
+        android:background="@color/colorBotones"
         android:onClick="enviar"
         android:padding="10dp"
-        android:layout_margin="10dp"/>
+        android:text="@string/botonComents" />
 
-</LinearLayout>
+</RelativeLayout>

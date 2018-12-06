@@ -1,6 +1,8 @@
 package com.ferreapp.ferreapp;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -23,7 +25,7 @@ public class ShoppingCartActivity extends Activity{
 
     SwipeControllerSC swipeController = null;
 
-    private Button mCreateOrder;
+    private Button mCreateOrder, mDeleteSC;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,8 +34,6 @@ public class ShoppingCartActivity extends Activity{
 
         products = ProductSingleton.getInstance().getProducts();
 
-        Log.d("wtf", "size coming home: " + products.size());
-
         mRecyclerView = findViewById(R.id.scRecyclerView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -41,20 +41,91 @@ public class ShoppingCartActivity extends Activity{
         mRecyclerView.setAdapter(recyclerViewAdapter);
 
         mCreateOrder = findViewById(R.id.createOrder);
+        mDeleteSC = findViewById(R.id.deleteSC);
+
         mCreateOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ShoppingCartActivity.this, Confirmar_Compra.class);
-                startActivity(intent);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingCartActivity.this);
+                builder.setMessage(R.string.create_message)
+                        .setTitle(R.string.create_title);
+
+                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(ShoppingCartActivity.this, Confirmar_Compra.class);
+                        startActivity(intent);
+                    }
+                });
+
+                builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        mDeleteSC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingCartActivity.this);
+                builder.setMessage(R.string.delete_sc)
+                        .setTitle(R.string.delete_sc_title);
+
+                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        int size = products.size();
+                        products.clear();
+                        for(int i = 0; i < size; i++){
+                            recyclerViewAdapter.notifyItemRemoved(i);
+                            recyclerViewAdapter.notifyItemRangeChanged(i, recyclerViewAdapter.getItemCount());
+                        }
+                    }
+                });
+
+                builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
             }
         });
 
         swipeController = new SwipeControllerSC(new SwipeControllerActions() {
             @Override
             public void onLeftClicked(int position) {
-                products.remove(position);
-                recyclerViewAdapter.notifyItemRemoved(position);
-                recyclerViewAdapter.notifyItemRangeChanged(position, recyclerViewAdapter.getItemCount());
+
+                final int i = position;
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ShoppingCartActivity.this);
+                builder.setMessage(R.string.create_message)
+                        .setTitle(R.string.create_title);
+
+                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        products.remove(i);
+                        recyclerViewAdapter.notifyItemRemoved(i);
+                        recyclerViewAdapter.notifyItemRangeChanged(i, recyclerViewAdapter.getItemCount());
+                    }
+                });
+
+                builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
@@ -67,7 +138,5 @@ public class ShoppingCartActivity extends Activity{
                 swipeController.onDraw(c);
             }
         });
-
-
     }
 }

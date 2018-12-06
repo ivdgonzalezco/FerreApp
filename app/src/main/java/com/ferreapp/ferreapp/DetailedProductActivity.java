@@ -31,6 +31,7 @@ public class DetailedProductActivity extends Activity {
         mDetailedProductPrice = findViewById(R.id.detailedViewPrice);
         mDetailedProductDescription = findViewById(R.id.detailedViewDescription);
         mDetailedProductAmount = findViewById(R.id.detailedViewAmount);
+        mDetailedProductImage = findViewById(R.id.detailedViewImage);
 
         Resources res = getResources();
 
@@ -41,6 +42,7 @@ public class DetailedProductActivity extends Activity {
         mDetailedProductPrice.setText(intent.getStringExtra("productPrice"));
         mDetailedProductDescription.setText(intent.getStringExtra("productDescription"));
         mDetailedProductAmount.setText(String.format(res.getString(R.string.amount_format), intent.getStringExtra("productAmount")));
+        new DownloadImageTask(mDetailedProductImage).execute(intent.getStringExtra("productImage"));
     }
 }
 

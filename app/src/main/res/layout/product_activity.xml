@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="148dp"
         android:text="TextView"
         android:textColor="@android:color/background_dark" />
 
@@ -61,6 +61,7 @@
         android:layout_below="@+id/detailedViewImage"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="-15dp"
+        android:background="@color/colorBotones"
         android:text="Añadir al carrito de compras" />
 
     <TextView

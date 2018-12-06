@@ -63,10 +63,11 @@
             <EditText
                 android:id="@+id/scProductAmount"
                 android:layout_width="48dp"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/scProductName"
                 android:layout_marginEnd="51dp"
+                android:background="@android:color/background_light"
                 android:ems="12"
                 android:inputType="number"
                 android:textAlignment="center"
@@ -75,10 +76,11 @@
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="wrap_content"
+                android:layout_width="69dp"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/scProductAmount"
+                android:layout_alignParentEnd="true"
                 android:layout_alignTop="@+id/scProductName"
+                android:layout_marginEnd="34dp"
                 android:text="Cantidad"
                 android:textColor="@android:color/background_dark" />
 

@@ -5,14 +5,11 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -49,6 +46,8 @@ public class RecyclerViewFBAdapter extends RecyclerView.Adapter<RecyclerViewFBAd
         recyclerViewHolder.mProductPrice.setText(product.getProductPrice());
         recyclerViewHolder.mProductAmount.setText(String.format(res.getString(R.string.amount_format),product.getProductAmount()));
 
+        new DownloadImageTask(recyclerViewHolder.mProductImage).execute(product.getProductImageURL());
+
         recyclerViewHolder.mProductLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +57,7 @@ public class RecyclerViewFBAdapter extends RecyclerView.Adapter<RecyclerViewFBAd
                 intent.putExtra("productPrice", product.getProductPrice());
                 intent.putExtra("productDescription", product.getProductDescription());
                 intent.putExtra("productAmount", product.getProductAmount());
+                intent.putExtra("productImage", product.getProductImageURL());
 
                 context.startActivity(intent);
             }
@@ -97,7 +97,7 @@ public class RecyclerViewFBAdapter extends RecyclerView.Adapter<RecyclerViewFBAd
             mProductImage = itemView.findViewById(R.id.productImage);
             mProductName = itemView.findViewById(R.id.productName);
             mProductBrand = itemView.findViewById(R.id.productBrand);
-            mProductPrice = itemView.findViewById(R.id.productPrice);
+            mProductPrice = itemView.findViewById(R.id.ratingClass);
             mProductLayout = itemView.findViewById(R.id.productLayout);
             mProductAmount = itemView.findViewById(R.id.productAmount);
         }

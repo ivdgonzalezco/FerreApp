@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/colorFondo">
+    android:background="#FFF700"
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -13,64 +14,76 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6">
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FerreApp"
+            android:textColor="@android:color/black"
+            android:textSize="88sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ferre App"
-            android:textSize="70dp"
-            android:textColor="@color/colorLetra"
             android:layout_gravity="center"
-            android:layout_marginRight="5dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
             android:text="Materiales de construcción"
-            android:textSize="20dp"
             android:textColor="@color/colorLetra"
-            android:layout_gravity="center"
-            android:layout_marginBottom="2dp"/>
+            android:textSize="20dp" />
+
         <TextView
             android:id="@+id/status_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:textSize="14dp"
-            android:textColor="@color/colorAccent"/>
+            android:textSize="14dp" />
+
         <EditText
             android:id="@+id/userId"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:hint="Usuario"
-            android:background="@color/colorCajaTexto"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
+            android:background="@color/colorCajaTexto"
+            android:hint="Correo electrónico"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
             android:textColor="@color/colorLetra"
-            android:textColorHint="@color/colorHint"/>
+            android:textColorHint="@color/colorHint" />
+
         <EditText
             android:id="@+id/passwordId"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:hint="Contraseña"
-            android:background="@color/colorCajaTexto"
-            android:layout_marginBottom="2dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
+            android:background="@color/colorCajaTexto"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
             android:password="true"
             android:textColor="@color/colorLetra"
-            android:textColorHint="@color/colorHint"/>
+            android:textColorHint="@color/colorHint" />
+
         <Button
             android:id="@+id/loginId"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBotones"
-            android:text="Ingresar"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"/>
+            android:layout_marginRight="50dp"
+            android:background="#A6A000"
+            android:text="Ingresar" />
+
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
             android:layout_width="fill_parent"
@@ -78,59 +91,70 @@
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"/>
+            android:layout_marginRight="50dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
             android:text="¿Aún no estas en FerreApp?"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textColor="@color/colorLetra"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/registrate"
-            android:layout_gravity="center"
             android:textColor="@color/colorLetra"
-            android:id="@+id/registrarseId" />
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
         <Button
+            android:id="@+id/registrarseId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#A6A000"
+            android:text="@string/registrate" />
+
+        <Button
+            android:id="@+id/signOutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="Cerrar sesión"
             android:textSize="5dp"
-            android:layout_marginBottom="10dp"
-            android:id="@+id/signOutButton"/>
+            android:visibility="invisible" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Acerca de FerreApp"
-            android:textSize="8dp"
-            android:layout_gravity="center"
-            android:textColor="@color/colorLetra"/>
+            android:textColor="@color/colorLetra"
+            android:textSize="8dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Términos del servicio"
-            android:textSize="8dp"
-            android:layout_gravity="center"
-            android:textColor="@color/colorLetra"/>
+            android:textColor="@color/colorLetra"
+            android:textSize="8dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Póliticas de privacidad"
-            android:textSize="8dp"
             android:layout_gravity="center"
-            android:textColor="@color/colorLetra"/>
+            android:text="Póliticas de privacidad"
+            android:textColor="@color/colorLetra"
+            android:textSize="8dp" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_marginLeft="40dp"/>
+            android:layout_marginLeft="40dp" />
+
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="right"
-            android:layout_marginRight="40dp"/>
+            android:layout_marginRight="40dp" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

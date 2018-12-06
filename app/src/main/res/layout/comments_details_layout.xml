@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:id="@+id/linearlayout"
+    android:orientation="vertical"
+    tools:context=".Calificar_Pedido">
+
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="47dp"
+        android:padding="10dp"
+        android:text="@string/TituloCalificacion"
+        android:textAlignment="center"
+        android:textColor="@color/colorLetra"
+        android:textSize="20dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBarDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="135dp"
+        android:background="?attr/colorPrimary"
+        android:numStars="5"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:isIndicator="true"/>
+
+    <TextView
+        android:id="@+id/RatingScaleDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="202dp"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorLetra"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/titulo3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:padding="10dp"
+        android:text="@string/TituloComents"
+        android:textAlignment="center"
+        android:textColor="@color/colorLetra"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/comentariosDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="190dp"
+        android:hint="@string/opinion"
+        android:inputType="textMultiLine"
+        android:padding="10dp"
+        android:textColor="@color/colorLetra" />
+
+</RelativeLayout>

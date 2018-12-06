@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/SC"
+        android:title="Carrito"
+        />
+    <item
+        android:id="@+id/Orders"
+        android:title="Mis Ordenes"
+        />
+    <item
+        android:id="@+id/Comments"
+        android:title="Mis Comentarios"
+        />
+    <item
+        android:id="@+id/Exit"
+        android:title="Salir"
+        />
+</menu>

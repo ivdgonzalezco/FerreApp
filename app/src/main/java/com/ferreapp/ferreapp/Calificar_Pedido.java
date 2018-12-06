@@ -1,5 +1,6 @@
 package com.ferreapp.ferreapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,51 +9,72 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Calificar_Pedido extends AppCompatActivity implements RatingBar.OnRatingBarChangeListener {
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
-    RatingBar mRatingBar;
-    TextView mRatingScale;
-    EditText comentario;
+public class Calificar_Pedido extends AppCompatActivity {
+
+    private RatingBar mRatingBar;
+    private TextView mRatingScale;
+    private EditText comentario;
+
+    private Float rate;
+
+    private ArrayList<Classification> classifications = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calificar_pedido);
-        mRatingBar = (RatingBar) findViewById(R.id.ratingBar);
-        mRatingScale = (TextView) findViewById(R.id.RatingScale);
-        comentario = (EditText) findViewById(R.id.comentarios);
 
+        mRatingBar = findViewById(R.id.ratingBar);
+        mRatingScale = findViewById(R.id.RatingScale);
+        comentario =  findViewById(R.id.comentarios);
+
+        classifications = ClassificationSingleton.getInstance().getClassifications();
+
+        mRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                if (rating <= 1.0){
+                    mRatingScale.setText("Malo");
+                    rate = rating;
+                }else if (rating > 1.0 && rating <= 2.0){
+                    mRatingScale.setText("Necesita mejorar");
+                    rate = rating;
+                }else if (rating > 2.0 && rating <= 3.0){
+                    mRatingScale.setText("Bueno");
+                    rate = rating;
+                }else if (rating > 3.0 && rating <= 4.0){
+                    mRatingScale.setText("Muy bueno");
+                    rate = rating;
+                }else {
+                    mRatingScale.setText("Excelente");
+                    rate = rating;
+                }
+            }
+        });
     }
 
     public void enviar(View view) {
-        String comentarios;
-        int valor = (int) mRatingBar.getRating();
-        comentarios = comentario.getText().toString();
-        //enviar a la BD
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+
+        String orderDate = formatter.format(date);
+
+        String comentarios = comentario.getText().toString();
+
+        Classification classification = new Classification(comentarios, orderDate, rate);
+
+        classifications.add(classification);
+
+        ClassificationSingleton.getInstance().setClassifications(classifications);
+
         Toast.makeText(this, "Gracias por sus comentarios", Toast.LENGTH_LONG).show();
 
+        Intent intent = new Intent(this, MainProductsActivity.class);
+        startActivity(intent);
     }
 
-    @Override
-    public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-        mRatingScale.setText(String.valueOf(v));
-        switch ((int) ratingBar.getRating()) {
-            case 1:
-                mRatingScale.setText("Malo");
-                break;
-            case 2:
-                mRatingScale.setText("Necesita mejorar");
-                break;
-            case 3:
-                mRatingScale.setText("Bueno");
-                break;
-            case 4:
-                mRatingScale.setText("Muy bueno");
-                break;
-            case 5:
-                mRatingScale.setText("Excelente");
-                break;
-            default:
-                mRatingScale.setText("");
-        }
-    }
 }

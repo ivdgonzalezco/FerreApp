@@ -3,6 +3,8 @@ package com.ferreapp.ferreapp;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,62 +24,23 @@ import java.util.Iterator;
 
 public class CommentsActivity extends AppCompatActivity {
 
-    private static final String TAG = "CommentsActivity";
-    private FirebaseFirestore db;
-    private ArrayList<Order> mOrders;
-    private TextView mText;
-    private ListView mList;
-    private String email;
+    RecyclerView mRecyclerView;
+    CommentArrayAdapter recyclerViewAdapter;
+    ArrayList<Classification> classifications;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comments);
 
+        classifications = ClassificationSingleton.getInstance().getClassifications();
 
-        mOrders = new ArrayList<Order>();
-        mList = (ListView) findViewById(R.id.list_comments);
-        mText = (TextView) findViewById(R.id.usuario_name);
+        mRecyclerView = findViewById(R.id.recyclerViewComments);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            // Name, email address, and profile photo Url
-            email = user.getEmail();
-            Log.d(TAG, "onCreate: user = "+email);
-        } else
-            email = "";
-
-        mText.setText("Comentarios del usuario "+email);
-
-        db = FirebaseFirestore.getInstance();
-
-        db.collection("orders")
-                .whereEqualTo("seller", email)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            Log.d(TAG, "onComplete: data fetched");
-
-                            for(int i=0; i< task.getResult().getDocuments().size();i++) {
-                                mOrders.add(task.getResult().getDocuments().get(i).toObject(Order.class));
-                            }
-
-
-
-                            CommentArrayAdapter adap = new CommentArrayAdapter(CommentsActivity.this,mOrders);
-                            mList.setAdapter(adap);
-
-
-
-                        }else {
-                            Log.d(TAG, "Error getting document: "+ task.getException());
-                        }
-                    }
-                });
-
-
+        recyclerViewAdapter = new CommentArrayAdapter(this, classifications);
+        mRecyclerView.setAdapter(recyclerViewAdapter);
     }
 
 }

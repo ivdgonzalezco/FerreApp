@@ -22,7 +22,7 @@
 
             <EditText
                 android:id="@+id/searchEditText"
-                android:layout_width="289dp"
+                android:layout_width="268dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:ems="10"
@@ -35,13 +35,13 @@
             <ImageButton
                 android:id="@+id/imageView"
                 android:layout_width="49dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="8dp"
                 android:background="@android:color/transparent"
-                app:srcCompat="@android:drawable/ic_menu_search" />
+                app:srcCompat="@android:drawable/arrow_down_float" />
 
         </RelativeLayout>
 

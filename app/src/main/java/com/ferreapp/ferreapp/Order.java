@@ -1,89 +1,52 @@
 package com.ferreapp.ferreapp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Order {
+public class Order implements Serializable{
 
-    private String seller;
-    private String buyer;
-    private int totalPrice;
-    private String state; //1-pagado 2-por_pagar 3-entregago 4-rechazado
-    private String comment; //bueno, deficiente, excelente, regular
-    private String commentDescription;
+    private String orderBuyer;
+    private String totalPrice;
+    private String orderDate;
     private ArrayList<Product> products;
 
-    public Order() {
+    public Order(String orderBuyer, String totalPrice, String orderDate, ArrayList<Product> products) {
+        this.orderBuyer = orderBuyer;
+        this.totalPrice = totalPrice;
+        this.orderDate = orderDate;
+        this.products = products;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public String getOrderBuyer() {
+        return orderBuyer;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setOrderBuyer(String orderBuyer) {
+        this.orderBuyer = orderBuyer;
     }
 
-    public void setCommentDescription(String commentDescription) {
-        this.commentDescription = commentDescription;
-    }
-
-    public String getSeller() {
-
-        return seller;
-    }
-
-    public String getBuyer() {
-        return buyer;
-    }
-
-    public int getTotalPrice() {
+    public String getTotalPrice() {
         return totalPrice;
     }
 
-    public String getState() {
-        return state;
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
-    public String getComment() {
-        return comment;
+    public String getOrderDate() {
+        return orderDate;
     }
 
-    public String getCommentDescription() {
-        return commentDescription;
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public List<Product> getProducts() {
+    public ArrayList<Product> getProducts() {
         return products;
     }
 
-    public Order(String seller, String buyer, int totalPrice, String state, String comment, String commentDescription, ArrayList<Product> products) {
-        this.seller = seller;
-        this.buyer = buyer;
-        this.totalPrice = totalPrice;
-        this.state = state;
-        this.comment = comment;
-        this.commentDescription = commentDescription;
+    public void setProducts(ArrayList<Product> products) {
         this.products = products;
-    }
-
-    public Order(String seller, String buyer, int totalPrice, ArrayList<Product> products) {
-        this.seller = seller;
-        this.buyer = buyer;
-        this.totalPrice = totalPrice;
-        this.products = products;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "seller='" + seller + '\'' +
-                ", buyer='" + buyer + '\'' +
-                ", totalPrice=" + totalPrice +
-                ", state='" + state + '\'' +
-                ", comment='" + comment + '\'' +
-                ", commentDescription='" + commentDescription + '\'' +
-                ", products=" + products +
-                '}';
     }
 }
